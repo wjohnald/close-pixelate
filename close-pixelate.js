@@ -54,7 +54,7 @@ function ClosePixelation( img, options ) {
   canvas.id = img.id
 
   this.img.onload = function() {
-    this.render( options )
+    cp.render( options )
   }
 
   // replace image with canvas
