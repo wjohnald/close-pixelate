@@ -42,7 +42,10 @@ if ( !isCanvasSupported ) {
 
 
 function ClosePixelation( img, options ) {
-  this.img = img
+  var cp = this
+
+  this.img = new Image()
+  this.img.src = img.src
   // creat canvas
   var canvas = this.canvas = document.createElement('canvas')
   this.ctx = canvas.getContext('2d')
@@ -50,7 +53,9 @@ function ClosePixelation( img, options ) {
   canvas.className = img.className
   canvas.id = img.id
 
-  this.render( options )
+  this.img.onload = function() {
+    this.render( options )
+  }
 
   // replace image with canvas
   img.parentNode.replaceChild( canvas, img )
